@@ -1,0 +1,6 @@
+
+String name = OUDialog.request("What's your name, dude?");
+int age = Integer.parseInt(OUDialog.request("And your age?"));
+String username = OUDialog.request("And your Reddit username?");
+
+OUDialog.alert("Gotcha. \nYour name is " + name + ", you're " + age + " years old and your username is " + username + ". \nWelcome to Reddit.");

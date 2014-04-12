@@ -1,0 +1,2 @@
+DPC002 test = new DPC002();
+test.calcForce();
