@@ -1,14 +1,16 @@
-
+import ou.*;
 /**
- * Write a description of class CeaserCipher here.
+ * Daily Programming Challenges - [Easy] #003
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author s0nOfAGlitch 
+ * @version 2014.04.14
  */
 public class CeaserCipher
 {
    // instance variables - replace the example below with your own
-   private int x;
+   private int cipherRotation;
+   private String inputString;
+   private String outputString;
 
    /**
     * Constructor for objects of class CeaserCipher
@@ -16,18 +18,117 @@ public class CeaserCipher
    public CeaserCipher()
    {
       // initialise instance variables
-      x = 0;
    }
 
    /**
-    * An example of a method - replace this comment with your own
-    * 
-    * @param  y   a sample parameter for a method
-    * @return     the sum of x and y 
+    * Sets inputString to the value of the argument anInputString
     */
-   public int sampleMethod(int y)
+   public void setInputString(String anInputString)
    {
-      // put your code here
-      return x + y;
+      this.inputString = anInputString;
    }
+   
+   /**
+    * Returns the value of inputString
+    */
+   public String getInputString()
+   {
+      return this.inputString;
+   }
+   
+    /**
+    * Sets outputString to the value of the argument anOutputString
+    */
+   public void setOutputString(String anOutputString)
+   {
+      this.outputString = anOutputString;
+   }
+   
+   /**
+    * Returns the value of outputString
+    */
+   public String getOutputString()
+   {
+      return this.outputString;
+   }
+   
+    /**
+    * Sets cipherRotation to the value of the argument aCipher
+    */
+   public void setCipherRotation(int aCipher)
+   {
+      this.cipherRotation = aCipher;
+   }
+   
+   /**
+    * Returns the value of cipherRotation
+    */
+   public int getCipherRotation()
+   {
+      return this.cipherRotation;
+   }
+   
+   /**
+    * Requests the input to be encoded/decoded from the user
+    * and stores in inputString
+    */
+   public void requestInputString()
+   {
+      this.setInputString(OUDialog.request("Please enter your message."));
+   }
+   
+   /**
+    * Requests the number of cipher rotations to be used
+    * and stores in cipherRotation
+    */
+   public void requestCipherRotation()
+   {
+      this.setCipherRotation(Integer.parseInt(OUDialog.request("Please enter cipher key to be used \n(1 - 26)")));
+   }
+   
+   /**
+    * Encodes the inputStrng and stores the coded message in outputString
+    */
+   public void encodeMessage()
+   {
+      //Creates char array to store input and output characters
+      char[] inputChars = new char[inputString.length()];
+      char[] outputChars = new char[inputString.length()];
+
+
+      //Fills inputChar array with each character from input string
+      for (int i = 0; i < inputString.length(); i++)
+      {
+         inputChars[i] = inputString.charAt(i);
+      }
+
+
+      //Increments each character by cipher and fills outputChars array
+      for(int i = 0; i < inputString.length(); i++)
+      {	
+         outputChars[i] = (char) (inputChars[i] + cipherRotation);
+      }
+      
+      this.setOutputString(String.valueOf(outputChars));
+   }
+   
+   /**
+    * Displays the outputString in a alert dialogue
+    */
+   public void displayOutput()
+   {
+      OUDialog.alert("Your message has been encoded as is as follows:\n\n" + this.getOutputString());
+   }
+   
+   /**
+    * Main method for the Ceaser Cipher program
+    */
+   public void main()
+   {
+      this.requestInputString();
+      this.requestCipherRotation();
+      this.encodeMessage();
+      this.displayOutput();
+   }
+   
 }

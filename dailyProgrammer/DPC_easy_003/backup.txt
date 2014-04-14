@@ -1,23 +1,2 @@
-//requests input String
-String inputString = OUDialog.request("Please enter your text to be encoded.");
-
-//requests cipher key (positions to rotate)
-int cipher = Integer.parseInt(OUDialog.request("Please enter cipher key to be used \n(1 - 26)"));
-
-//Creates char array to store input and output characters
-char[] inputChars = new char[inputString.length()];
-char[] outputChars = new char[inputString.length()];
-
-
-//Fills inputChar array with each character from input string
-for (int i = 0; i < inputString.length(); i++)
-{
-	inputChars[i] = inputString.charAt(i);
-}
-
-
-//Increments each character by cipher and fills outputChars array
-for(int i = 0; i < inputString.length(); i++)
-{	
-	outputChars[i] = (char) (inputChars[i] + cipher);
-}
+CeaserCipher cipher = new CeaserCipher();
+cipher.main();
