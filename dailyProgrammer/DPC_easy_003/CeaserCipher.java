@@ -20,6 +20,20 @@ public class CeaserCipher
       // initialise instance variables
    }
 
+   
+   
+   /**
+    * Main method for the Ceaser Cipher program
+    */
+   public void main()
+   {
+      this.requestInputString();
+      this.requestCipherRotation();
+      this.encodeMessage();
+      this.displayOutput();
+   }
+   
+   
    /**
     * Sets inputString to the value of the argument anInputString
     */
@@ -113,22 +127,11 @@ public class CeaserCipher
    }
    
    /**
-    * Displays the outputString in a alert dialogue
+    * Displays the outputString in an alert dialogue
     */
    public void displayOutput()
    {
       OUDialog.alert("Your message has been encoded as is as follows:\n\n" + this.getOutputString());
-   }
-   
-   /**
-    * Main method for the Ceaser Cipher program
-    */
-   public void main()
-   {
-      this.requestInputString();
-      this.requestCipherRotation();
-      this.encodeMessage();
-      this.displayOutput();
    }
    
 }
