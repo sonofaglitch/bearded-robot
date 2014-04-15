@@ -84,11 +84,12 @@ public class CeaserCipher
    
    /**
     * Requests the input to be encoded/decoded from the user
-    * and stores in inputString
+    * and stores in inputString, then converts the input string into lowercase
     */
    public void requestInputString()
    {
       this.setInputString(OUDialog.request("Please enter your message."));
+      this.setInputString(this.inputString.toLowerCase());
    }
    
    /**
@@ -102,6 +103,7 @@ public class CeaserCipher
    
    /**
     * Encodes the inputStrng and stores the coded message in outputString
+    * as uppercase
     */
    public void encodeMessage()
    {
@@ -119,11 +121,19 @@ public class CeaserCipher
 
       //Increments each character by cipher and fills outputChars array
       for(int i = 0; i < inputString.length(); i++)
-      {	
-         outputChars[i] = (char) (inputChars[i] + cipherRotation);
+      {  
+        
+         if 	((inputChars[i] + cipherRotation) > 122 || (inputChars[i] + cipherRotation) < 0)
+         {
+            outputChars[i] = (char) (96 + (cipherRotation -(122 - inputChars[i])));
+         }
+         else
+         {
+            outputChars[i] = (char) (inputChars[i] + cipherRotation);
+         }
       }
       
-      this.setOutputString(String.valueOf(outputChars));
+      this.setOutputString(String.valueOf(outputChars).toUpperCase());
    }
    
    /**

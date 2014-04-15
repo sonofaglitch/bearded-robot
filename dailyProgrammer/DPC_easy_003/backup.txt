@@ -1,2 +1,23 @@
-CeaserCipher cipher = new CeaserCipher();
-cipher.main();
+CeaserCipher test = new CeaserCipher();
+test.main();
+
+
+
+
+
+
+
+//Fills inputChar array with each character from input string
+      for (int i = 0; i < inputString.length(); i++)
+      {
+         inputChars[i] = inputString.charAt(i);
+      }
+
+
+      //Increments each character by cipher and fills outputChars array
+      for(int i = 0; i < inputString.length(); i++)
+      {  
+         outputChars[i] = (char) (inputChars[i] + cipherRotation);
+      }
+      
+      this.setOutputString(String.valueOf(outputChars).toUpperCase());
