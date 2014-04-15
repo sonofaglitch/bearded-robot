@@ -68,10 +68,14 @@ public class CeaserCipher
    
     /**
     * Sets cipherRotation to the value of the argument aCipher
+    * 
+    * Includes error-handling dialogue for negative numbers and numbers > 26
     */
    public void setCipherRotation(int aCipher)
    {
-      this.cipherRotation = aCipher;
+
+         this.cipherRotation = aCipher;
+
    }
    
    /**
@@ -90,6 +94,8 @@ public class CeaserCipher
    {
       this.setInputString(OUDialog.request("Please enter your message."));
       this.setInputString(this.inputString.toLowerCase());
+      
+      
    }
    
    /**
@@ -99,6 +105,12 @@ public class CeaserCipher
    public void requestCipherRotation()
    {
       this.setCipherRotation(Integer.parseInt(OUDialog.request("Please enter cipher key to be used \n(1 - 26)")));
+      
+      while(this.getCipherRotation() < 0 || this.getCipherRotation() > 26)
+      {
+         OUDialog.alert("Cipher number must be between 0 and 26, inclusive");
+         this.setCipherRotation(Integer.parseInt(OUDialog.request("Please enter cipher key to be used \n(1 - 26)")));
+      }
    }
    
    /**
@@ -141,7 +153,7 @@ public class CeaserCipher
     */
    public void displayOutput()
    {
-      OUDialog.alert("Your message has been encoded as is as follows:\n\n" + this.getOutputString());
+      OUDialog.alert("Your message has been encoded and is as follows:\n\n" + this.getOutputString());
    }
    
 }
